@@ -36,10 +36,12 @@ def mergeTwoLists(self, list1, list2):
         # store the next value before merging, or else it won't know what the next val is
 
         list1.next = self.mergeTwoLists(next1, list2)
+        # merge the rest of list1 and list2, and link to the current node of list1
 
         return list1
     else:
         next2 = list2.next
         list2.next = self.mergeTwoLists(list1, next2)
+        # merge list1 and the next of list2, and link to current ode of list2
 
         return list2
