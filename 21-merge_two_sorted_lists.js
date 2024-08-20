@@ -24,27 +24,44 @@
 // -100 <= Node.val <= 100
 // Both list1 and list2 are sorted in non-decreasing order.
 
-var mergeTwoLists = function (list1, list2) {
-    let res = { val: 0, next: null }
-    let node = res
 
-    while (list1 && list2) {
-        if (list1.val < list2.val) {
-            node.next = list1
-            list1 = list1.next
-        } else {
-            node.next = list2
-            list2 = list2.next
-        }
+// ITERATIVE
+// var mergeTwoLists = function (list1, list2) {
+//     let res = { val: 0, next: null }
+//     let node = res
 
-        node = node.next
-    }
+//     while (list1 && list2) {
+//         if (list1.val < list2.val) {
+//             node.next = list1
+//             list1 = list1.next
+//         } else {
+//             node.next = list2
+//             list2 = list2.next
+//         }
 
-    if (list1) {
-        node.next = list1
+//         node = node.next
+//     }
+
+//     if (list1) {
+//         node.next = list1
+//     } else {
+//         node.next = list2
+//     }
+
+//     return res.next
+// }
+
+
+// RECURSIVE
+var mergeTwoLists(list1, list2) {
+    if (list1 === null) return list2;
+    if (list2 === null) return list1;
+
+    if (list1.val < list2.val) {
+        list1.next = mergeTwoLists(list1.next, list2)
+        return list1
     } else {
-        node.next = list2
+        list2.next = mergeTwoLists(list2.next, list1)
+        return list2
     }
-
-    return res.next
 }
