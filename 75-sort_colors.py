@@ -28,10 +28,13 @@ def sortColors(self, nums):
     """
 
     counts = [0] * 3
+    # initialize a counts array with 3 zeros, with eah index corresponding to the count of 0s, 1s, 2s in the nums list
 
     for n in nums:
         counts[n] += 1
-    # count each number in nums and put it into counts
+    # loop through each element n in nums
+    # for each element n, it increments the corresponding index in the 'counts' array
+    # after the loop, counts will contain the count of 0s, 1s, 2s in nums
 
     i = 0
 
@@ -39,7 +42,6 @@ def sortColors(self, nums):
         for c in range(counts[n]):
             nums[i] = n
             i += 1
-    # loop through each number in counts
-    # for each count of the number n, repeat the loop count[n] times
-    # assign the value n to the currect index in the nums list
-    # increment index to move to next position
+    # loop through the indices of counts
+    # run counts[n] times for each n, filling the nums array with n (the corrrect number of times according to the count in counts[n])
+    # the i variable keeps track of the position in nums list where the nxt number should be placed
