@@ -31,21 +31,25 @@ from collections import Counter
 
 def frequencySort(self, s):
     n = len(s)
+    # count how many chars in s
+
     c = Counter(s)
+    # count frequench of each char in the string, returning a dictionary-like object wher ekeys are chars and values are their counts in s
 
     bucket = [[] for _ in range (n + 1)]
-    # create a list of empty lists, with ne extra to account for index 0
+    # create a list of empty lists, with one extra to account for index 0
 
     for char, freq in c.items():
         bucket[freq].append(char)
-
         # for each char and its freq, append char to corresponding bucket
 
     res = ''
+    # initialize empty string to store final sorting
 
     for freq in range(n, 0, -1):
-        # loop over frequenices, down from 1
+        # loop over frequenices, down from n to 1, inclusive, ensuring characters with higher frequencies are processed first
         for char in bucket[freq]:
             res += freq * char
+            # for each freq, the loop iterates over all characters in bucket[freq], with res being updated by appending each char repeated req times
             
     return res
