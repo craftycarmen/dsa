@@ -25,6 +25,8 @@
 # 1 <= k <= points.length <= 104
 # -104 <= xi, yi <= 104
 
+import heapq
+
 def kClosest(self, points, k):
     pts = []
 
