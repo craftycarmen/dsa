@@ -31,6 +31,11 @@
 var isIsomorphic = function (s, t) {
     for (let i = 0; i < s.length; i++) {
         if (s.indexOf(s[i], i + 1) !== t.indexOf(t[i], i + 1)) return false;
+        // for each character in position i in s and t, compare the next occurence of the char in both strings
+        // s.indexOf(s[i], i + 1) ==> looks at the next occurence of s[i], starting from index i + 1
+        // t.indexOf(t[i], i + 1) ==> looks at the next occurence of t[i], starting from index i + 1
+
+        // if  the next occurence of s[i] is not the same as the next occurence of t[i] (i.e., their relative positions don't match), return false
 
         // s[i] = character at index i in string s
         // i + 1 = starting point for the search to find the next occurence of s[i], starting from i + 1 
