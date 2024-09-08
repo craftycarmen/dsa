@@ -33,18 +33,29 @@
 
 # // Follow-up: Can you come up with an algorithm that is less than O(n2) time complexity?
 
+# def twoSum(self, nums, target):
+#     hash = {}
+
+#     for i, num in enumerate(nums):
+#         # enumerate generates pairs of index and value for each element in nums
+#         complement = target - num
+
+#         if complement in hash:
+#             return [i, hash[complement]]
+
+#         # if complement is found in hash, return its index and value
+
+#         hash[num] = i
+
+#         # if complement is not found in hash, add the current number and its index to hash and continue onto next iteration
+
+
 def twoSum(self, nums, target):
-    hash = {}
+    prevMap = { } # val : index
 
-    for i, num in enumerate(nums):
-        # enumerate generates pairs of index and value for each element in nums
-        complement = target - num
-
-        if complement in hash:
-            return [i, hash[complement]]
-
-        # if complement is found in hash, return its index and value
-
-        hash[num] = i
-
-        # if complement is not found in hash, add the current number and its index to hash and continue onto next iteration
+    for i, n in enumerate(nums):
+        diff = target - n
+        if diff in prevMap:
+            return [prevMap[diff], i]
+        prevMap[n] = i
+    return
