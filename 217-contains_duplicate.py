@@ -28,3 +28,5 @@ def containsDuplicate(self, nums):
         hashset.add(n)
     
     return False
+
+# O(n) in time and space
