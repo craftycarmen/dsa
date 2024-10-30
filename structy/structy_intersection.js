@@ -26,5 +26,5 @@ console.log(intersection([4, 2, 1], [1, 2, 4, 6])) // -> [1,2,4]
 
 // n = a.length;
 // m = b.length;
-// time complexity: O(n+m)
+// time complexity: O(n+m) ==> add when code is consequential; multiple when code is nested
 // space complexity: O(n)
