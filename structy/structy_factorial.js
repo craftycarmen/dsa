@@ -20,3 +20,7 @@ const factorial = (n) => {
 console.log(factorial(3)); // -> 6
 console.log(factorial(6)); // -> 720
 console.log(factorial(18)); // -> 6402373705728000
+
+// n = input number
+// time complexity: O(n)
+// space complexity: O(n)
