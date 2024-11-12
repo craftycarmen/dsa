@@ -28,4 +28,4 @@ console.log(sumNumbersRecursive([])); // -> 0);
 
 // # of function calls + each function takes up a unit of memory in the call stack, so it's at least O(n)
 // sliced subarray length takes up space, similarly the size gets smaller, the avg becomes O(n/2)
-// TOTAL SPACE COMPLEXITY: 
+// TOTAL SPACE COMPLEXITY: O(n*n) => O(n2)
