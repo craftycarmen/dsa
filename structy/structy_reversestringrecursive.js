@@ -18,3 +18,10 @@ const reverseString = (s) => {
 console.log(reverseString("hello")); // -> "olleh"
 console.log(reverseString("abcdefg")); // -> "gfedcba"
 console.log(reverseString("")); // -> ""
+
+// n = string length
+// time complexity: O(n2)
+// n because of the recursive calls where every call corresponds to a character in the string * n because we have to slice out the remainng characters, which is roughly a length of n for every recursive call
+
+// space complexity: O(n2)
+// n stack frames consumed because of the recursive calls * n new strings we have to pass in for every recursive call
