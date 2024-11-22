@@ -1,10 +1,10 @@
 // linked list find
 // Write a function, linkedListFind, that takes in the head of a linked list and a target value. The function should return a boolean indicating whether or not the linked list contains the target.
 
-// *** ITERATIVE *** //
-// save head as current
-// while current is not null: if current's value is the target, return true; else reassign current to next property
-// return false
+// *** RECURSIVE *** //
+// base case 1: if head is null, return false;
+// base case 2: if head's value is the target, return true;
+// recursive step: return linkedListFind with head's next property and target passed in
 
 class Node {
     constructor(val) {
@@ -14,19 +14,15 @@ class Node {
 }
 
 const linkedListFind = (head, target) => {
-    let current = head;
+    if (head === null) return false;
+    if (head.val === target) return true;
 
-    while (current !== null) {
-        if (current.val === target) return true;
-        current = current.next;
-    }
-
-    return false;
+    return linkedListFind(head.next, target);
 }
 
 // n = number of nodes
-// time complexity: O(n) ==> we are iterating through every node of the list
-// space complexity: O(1) ==> we are using a constant number of variables
+// time complexity: O(n) ==> we are making a call for every node in the linked list
+// space complexity: O(n) ==> by the time we bottom out at each of those calls at a base case, we have to store them at the call stack
 
 const a = new Node("a");
 const b = new Node("b");
