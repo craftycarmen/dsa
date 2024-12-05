@@ -9,33 +9,24 @@ class Node {
     }
 }
 
-// *** ITERATIVE ***//
-// 1. save head as current variable
-// 2. save null as prev variable
-// 3. while current is not null:
-//      a. save current's next property as next variable
-//      b. reassign current's next property to point to prev
-//      c. reassign prev to point to current
-//      d. reassign current to point to next
-// 4. return prev, as it now the new head
+// *** RECURSIVE ***//
+// 1. add a default argument of prev equaling to null
+// 2. base case: if head is null, return prev
+// 3. save head's next property in a next constant variable
+// 4. reassign head's next property to point to prev
+// 5. recursive step: return reverseList with next and head passed in as arguments
 
-const reverseList = (head) => {
-    let current = head;
-    let prev = null;
+const reverseList = (head, prev = null) => {
+    if (head === null) return prev;
+    const next = head.next;
+    head.next = prev
 
-    while (current !== null) {
-        const next = current.next;
-        current.next = prev;
-        prev = current;
-        current = next;
-    }
-
-    return prev
+    return reverseList(next, head)
 }
 
 // n = number of nodes
 // time complexity: O(n) because it traverses through the entire linked list once
-// space complexity: O(1) because we only need a fixed number of variables
+// space complexity: O(n) because we are storing every call upon the call stack
 
 
 // *** test case *** //
