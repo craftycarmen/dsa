@@ -3,12 +3,11 @@
 
 // You may assume that the input list is non-empty.
 
-// *** ITERATIVE *** //
-// 1. save head as current
-// 2. while current is NOT null:
-//      a. if current's value is NOT the same as head's value, return false
-//      b. reassign current to point to current's next property
-// 3. return true
+// *** RECURSIVE *** //
+// 1. add a default argument of prevVal = null
+// 2. base case: if head is null, return true
+// 3. if prevVal is NOT null AND head's value DOES NOT equal to prevVal, return false
+// 4. recursive step: return the recursive call of isUnivaluelist with head's next property and head's value passed in
 
 class Node {
     constructor(val) {
@@ -17,21 +16,17 @@ class Node {
     }
 }
 
-const isUnivalueList = (head) => {
-    let current = head;
+const isUnivalueList = (head, prevVal = null) => {
+    if (head === null) return true;
+    if (prevVal !== null && head.val !== prevVal) return false;
 
-    while (current !== null) {
-        if (current.val !== head.val) return false;
-
-        current = current.next;
-    }
-
-    return true;
+    return isUnivalueList(head.next, head.val);
 }
 
 // n = number of nodes
-// time complexity: O(n) because we are iterating through every node of the list
-// space complexity: 0(1) because we have a constant number of variables
+// time complexity: O(n)
+// space complexity: O(1)
+
 
 // *** test case 1 *** //
 const a = new Node(7);
