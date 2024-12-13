@@ -34,7 +34,7 @@ const removeNode = (head, targetVal) => {
 // time complexity: O(n) because we're traversing once
 // space complexity: O(n) because of the call stack
 
-// *** test case 1 *** //
+// ** test case 1 ** //
 const a = new Node("a");
 const b = new Node("b");
 const c = new Node("c");
