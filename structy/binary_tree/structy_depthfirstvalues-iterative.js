@@ -37,6 +37,11 @@ const depthFirstValues = (root) => {
     return result;
 }
 
+// n = number of nodes
+// time complexity: O(n) because we're adding every node to the stack, but we're also removing them from the stack exactly once
+// space complexity: O(n) because the only thing we're storing is the the stack, which is a linear data structure
+
+
 // // *** TEST 00 *** //
 // const a = new Node('a');
 // const b = new Node('b');
