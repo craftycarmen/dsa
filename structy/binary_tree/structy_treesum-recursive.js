@@ -19,6 +19,10 @@ const treeSum = (root) => {
     return root.val + treeSum(root.left) + treeSum(root.right);
 }
 
+// n = number of nodes
+// time complexity: O(n) because we're making a single recursive call for every node
+// space complexity: O(n)
+
 // // *** TEST 00 *** //
 // const a = new Node(3);
 // const b = new Node(11);
