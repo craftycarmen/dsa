@@ -25,7 +25,7 @@ const treeLevels = (root) => {
     if (root === null) return [];
 
     const levels = [];
-    const queue = ({ node: root, levelNum: 0 });
+    const queue = [{ node: root, levelNum: 0 }];
 
     while (queue.length > 0) {
         const { node, levelNum } = queue.shift();
@@ -47,69 +47,69 @@ const treeLevels = (root) => {
 // time complexity: O(n)
 // space complexity: O(n)
 
-// // *** TEST 00 *** //
-// const a = new Node("a");
-// const b = new Node("b");
-// const c = new Node("c");
-// const d = new Node("d");
-// const e = new Node("e");
-// const f = new Node("f");
-
-// a.left = b;
-// a.right = c;
-// b.left = d;
-// b.right = e;
-// c.right = f;
-
-// //      a
-// //    /   \
-// //   b     c
-// //  / \     \
-// // d   e     f
-
-// console.log(treeLevels(a)); // ->
-// // [
-// //   ['a'],
-// //   ['b', 'c'],
-// //   ['d', 'e', 'f']
-// // ]
-
-
-// *** TEST 01 *** //
+// *** TEST 00 *** //
 const a = new Node("a");
 const b = new Node("b");
 const c = new Node("c");
 const d = new Node("d");
 const e = new Node("e");
 const f = new Node("f");
-const g = new Node("g");
-const h = new Node("h");
-const i = new Node("i");
 
 a.left = b;
 a.right = c;
 b.left = d;
 b.right = e;
 c.right = f;
-e.left = g;
-e.right = h;
-f.left = i;
 
-//         a
-//      /    \
-//     b      c
-//   /  \      \
-//  d    e      f
-//      / \    /
-//     g  h   i
+//      a
+//    /   \
+//   b     c
+//  / \     \
+// d   e     f
 
 console.log(treeLevels(a)); // ->
 // [
 //   ['a'],
 //   ['b', 'c'],
-//   ['d', 'e', 'f'],
-//   ['g', 'h', 'i']
+//   ['d', 'e', 'f']
 // ]
+
+
+// // *** TEST 01 *** //
+// const a = new Node("a");
+// const b = new Node("b");
+// const c = new Node("c");
+// const d = new Node("d");
+// const e = new Node("e");
+// const f = new Node("f");
+// const g = new Node("g");
+// const h = new Node("h");
+// const i = new Node("i");
+
+// a.left = b;
+// a.right = c;
+// b.left = d;
+// b.right = e;
+// c.right = f;
+// e.left = g;
+// e.right = h;
+// f.left = i;
+
+// //         a
+// //      /    \
+// //     b      c
+// //   /  \      \
+// //  d    e      f
+// //      / \    /
+// //     g  h   i
+
+// console.log(treeLevels(a)); // ->
+// // [
+// //   ['a'],
+// //   ['b', 'c'],
+// //   ['d', 'e', 'f'],
+// //   ['g', 'h', 'i']
+// // ]
 
 
 // // *** TEST 02 *** //

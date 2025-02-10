@@ -78,41 +78,41 @@ const treeLevels = (root) => {
 // // ]
 
 
-// // *** TEST 01 *** //
-// const a = new Node("a");
-// const b = new Node("b");
-// const c = new Node("c");
-// const d = new Node("d");
-// const e = new Node("e");
-// const f = new Node("f");
-// const g = new Node("g");
-// const h = new Node("h");
-// const i = new Node("i");
+// *** TEST 01 *** //
+const a = new Node("a");
+const b = new Node("b");
+const c = new Node("c");
+const d = new Node("d");
+const e = new Node("e");
+const f = new Node("f");
+const g = new Node("g");
+const h = new Node("h");
+const i = new Node("i");
 
-// a.left = b;
-// a.right = c;
-// b.left = d;
-// b.right = e;
-// c.right = f;
-// e.left = g;
-// e.right = h;
-// f.left = i;
+a.left = b;
+a.right = c;
+b.left = d;
+b.right = e;
+c.right = f;
+e.left = g;
+e.right = h;
+f.left = i;
 
-// //         a
-// //      /    \
-// //     b      c
-// //   /  \      \
-// //  d    e      f
-// //      / \    /
-// //     g  h   i
+//         a
+//      /    \
+//     b      c
+//   /  \      \
+//  d    e      f
+//      / \    /
+//     g  h   i
 
-// console.log(treeLevels(a)); // ->
-// // [
-// //   ['a'],
-// //   ['b', 'c'],
-// //   ['d', 'e', 'f'],
-// //   ['g', 'h', 'i']
-// // ]
+console.log(treeLevels(a)); // ->
+// [
+//   ['a'],
+//   ['b', 'c'],
+//   ['d', 'e', 'f'],
+//   ['g', 'h', 'i']
+// ]
 
 
 // // *** TEST 02 *** //
