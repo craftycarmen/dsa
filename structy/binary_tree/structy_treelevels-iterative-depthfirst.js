@@ -46,6 +46,10 @@ const treeLevels = (root) => {
     return levels;
 }
 
+// n = number of nodes
+// time complexity: O(n)
+// space complexity: O(n)
+
 // // *** TEST 00 *** //
 // const a = new Node("a");
 // const b = new Node("b");
