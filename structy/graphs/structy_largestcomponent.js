@@ -43,6 +43,11 @@ const exploreSize = (graph, node, visited) => {
     return size;
 }
 
+// n = number of nodes;
+// e = number of edges
+// time complexity = O(e);
+// space complexity = O(n);
+
 // *** TEST 00 *** //
 console.log(largestComponent({
     0: ['8', '1', '5'],
