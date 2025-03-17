@@ -46,6 +46,11 @@ const traverseDistance = (graph, node, distance) => {
     return distance[node];
 }
 
+// e = number of edges
+// n = number nodes
+// time complexity: O(e) as we are doing a traversal through the entire graph through every edge
+// space complexity: O(n) as we need to mark things as visited with a distance and we're going to eventually visit all n nodes
+
 
 // // *** TEST 00 *** //
 // const graph = {
