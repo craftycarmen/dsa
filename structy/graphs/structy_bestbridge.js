@@ -26,10 +26,12 @@
 //              e. using the isInBounds helper function, check if grid, its neighborRow, and its neighborCol is in bounds AND if neighborPos is not in visited:
 //                      i. add neighborPos to visited set
 //                      ii. add neighborRow, neighborCol, and distance incremented by one as an array into the queue
+
 // B. declare a helper function called isInBounds, passing in grid, r, and c
 //      1. declare a constant variable called rowInBounds that checks if the row is in bounds: 0 less than or equal to r and r is less than length of the grid
 //      2. declare a constant variable called colInBounds that checks if the col is in bounds: 0 less than or equal to c and c is less than the length of the grid at 0
 //      3. return rowInbounds and colInBounds
+
 // C. declare a helper function called traverseIsland, passing in grid, r, c, and visited
 //      1. if the call of isInBounds with grid, r, and c is false OR grid at r and c is water ("W"), return visited
 //      2. declare a constant variable called pos that concatenates r, comma, and c into a string
@@ -78,6 +80,13 @@ const bestBridge = (grid) => {
             queue.push([neighborRow, neighborCol, distance + 1]);
         }
     }
+}
+
+const isInBounds = (grid, r, c) => {
+    const rowInBounds = 0 <= r && r < grid.length;
+    const colInBounds = 0 <= c && c < grid[0].length;
+
+    return rowInBounds && colInBounds;
 }
 
 // // ** TEST 00 ** //
