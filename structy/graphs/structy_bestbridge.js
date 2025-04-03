@@ -12,10 +12,10 @@
 //      4. initialize an empty array called queue
 //      5. iterate through every pos of mainIsland:
 //              a. deconstruct row and col into a variable that splits pos with a comma and maps them as Number
-//              b. add row, col, and 0 as the distance to queue
+//              b. add row, col, and 0 as the distance in an array into queue
 //      6. while the queue is not empty:
-//              a. declare a constant variable called pos that concatentates row, a comma, and col
-//              b. unpack row, col, and distance into a variable that removes the front element of the queue
+//              a. unpack row, col, and distance into a variable that removes the front element of the queue
+//              b. declare a constant variable called pos that concatentates row, a comma, and col
 //              c. if grid at rol and col is land ("L") AND mainIsland does not have pos, return the distance decremented by 1
 //      7. declare a constant variable called deltas, a collection of all the changes we need to do to row and col so we can look at all four neighbors: an array with the subarrays of [-1, 0], [1, 0], [0, -1], [0, 1]
 //      8. iterate through each delta of deltas:
@@ -38,7 +38,47 @@
 //      5. recursively call traverseIsland with grid, the appropriate row/column, and visited four times (one for each direction)
 //      6. return visited
 
+const bestBridge = (grid) => {
+    let mainIsland;
 
+    for (let r = 0; r < grid.length; r++) {
+        for (let c = 0; c < grid[0].length; c++) {
+            const potentialIsland = travrseIsland(grid, r, c, new Set());
+
+            if (potentialIsland.size > 0) mainIsland = potentialIsland;
+        }
+    }
+
+    const visited = new Set(mainIsland);
+    const queue = [];
+
+    for (let pos of mainIsland) {
+        const [row, col] = pos.split(',').map(Number);
+
+        queue.push([row, col, 0])
+    }
+
+    while (queue.length > 0) {
+        const [row, col, distance] = queue.shift();
+        const pos = row + ',' + col;
+
+        if (grid[row][col] === "L" && !mainIsland.has(pos)) return distance - 1;
+    }
+
+    const deltas = [[-1, 0], [1, 0], [0, -1], [0, 1]];
+
+    for (let delta of deltas) {
+        const [deltaRow, deltaCol] = delta;
+        const neighborRow = row + deltaRow;
+        const neighborCol = col + deltaCol;
+        const neighborPos = neighborRow + ',' + neighborCol;
+
+        if (isInBounds(grid, neighborRow, neighborCol) && !visited.has(neighborPos)) {
+            visited.add(neighborPos);
+            queue.push([neighborRow, neighborCol, distance + 1]);
+        }
+    }
+}
 
 // // ** TEST 00 ** //
 // const grid = [
