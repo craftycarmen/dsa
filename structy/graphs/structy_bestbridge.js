@@ -17,15 +17,15 @@
 //              a. unpack row, col, and distance into a variable that removes the front element of the queue
 //              b. declare a constant variable called pos that concatentates row, a comma, and col
 //              c. if grid at rol and col is land ("L") AND mainIsland does not have pos, return the distance decremented by 1
-//      7. declare a constant variable called deltas, a collection of all the changes we need to do to row and col so we can look at all four neighbors: an array with the subarrays of [-1, 0], [1, 0], [0, -1], [0, 1]
-//      8. iterate through each delta of deltas:
-//              a. deconstruct deltaRow and deltaCol from delta
-//              b. declare a constant variable called neighborRow that is the row + deltaRow
-//              c. declare a constant variable called neighborCol that is the col + deltaCol
-//              d. declare a constant variable called neighborPos that concatenates neighborRow, a comma, and neighborCol
-//              e. using the isInBounds helper function, check if grid, its neighborRow, and its neighborCol is in bounds AND if neighborPos is not in visited:
-//                      i. add neighborPos to visited set
-//                      ii. add neighborRow, neighborCol, and distance incremented by one as an array into the queue
+//              d. declare a constant variable called deltas, a collection of all the changes we need to do to row and col so we can look at all four neighbors: an array with the subarrays of [-1, 0], [1, 0], [0, -1], [0, 1]
+//              e. iterate through each delta of deltas:
+//                      i. deconstruct deltaRow and deltaCol from delta
+//                      ii. declare a constant variable called neighborRow that is the row + deltaRow
+//                      iii. declare a constant variable called neighborCol that is the col + deltaCol
+//                      iv. declare a constant variable called neighborPos that concatenates neighborRow, a comma, and neighborCol
+//                      v. using the isInBounds helper function, check if grid, its neighborRow, and its neighborCol is in bounds AND if neighborPos is not in visited:
+//                              1. add neighborPos to visited set
+//                              2. add neighborRow, neighborCol, and distance incremented by one as an array into the queue
 
 // B. declare a helper function called isInBounds, passing in grid, r, and c
 //      1. declare a constant variable called rowInBounds that checks if the row is in bounds: 0 less than or equal to r and r is less than length of the grid
@@ -45,7 +45,7 @@ const bestBridge = (grid) => {
 
     for (let r = 0; r < grid.length; r++) {
         for (let c = 0; c < grid[0].length; c++) {
-            const potentialIsland = travrseIsland(grid, r, c, new Set());
+            const potentialIsland = traverseIsland(grid, r, c, new Set());
 
             if (potentialIsland.size > 0) mainIsland = potentialIsland;
         }
@@ -65,19 +65,19 @@ const bestBridge = (grid) => {
         const pos = row + ',' + col;
 
         if (grid[row][col] === "L" && !mainIsland.has(pos)) return distance - 1;
-    }
 
-    const deltas = [[-1, 0], [1, 0], [0, -1], [0, 1]];
+        const deltas = [[-1, 0], [1, 0], [0, -1], [0, 1]];
 
-    for (let delta of deltas) {
-        const [deltaRow, deltaCol] = delta;
-        const neighborRow = row + deltaRow;
-        const neighborCol = col + deltaCol;
-        const neighborPos = neighborRow + ',' + neighborCol;
+        for (let delta of deltas) {
+            const [deltaRow, deltaCol] = delta;
+            const neighborRow = row + deltaRow;
+            const neighborCol = col + deltaCol;
+            const neighborPos = neighborRow + ',' + neighborCol;
 
-        if (isInBounds(grid, neighborRow, neighborCol) && !visited.has(neighborPos)) {
-            visited.add(neighborPos);
-            queue.push([neighborRow, neighborCol, distance + 1]);
+            if (isInBounds(grid, neighborRow, neighborCol) && !visited.has(neighborPos)) {
+                visited.add(neighborPos);
+                queue.push([neighborRow, neighborCol, distance + 1]);
+            }
         }
     }
 }
@@ -87,6 +87,24 @@ const isInBounds = (grid, r, c) => {
     const colInBounds = 0 <= c && c < grid[0].length;
 
     return rowInBounds && colInBounds;
+}
+
+const traverseIsland = (grid, r, c, visited) => {
+    if (!isInBounds(grid, r, c) || grid[r][c] === 'W') return visited;
+
+    const pos = r + ',' + c;
+
+
+    if (visited.has(pos)) return visited;
+
+    visited.add(pos);
+
+    traverseIsland(grid, r - 1, c, visited);
+    traverseIsland(grid, r + 1, c, visited);
+    traverseIsland(grid, r, c - 1, visited);
+    traverseIsland(grid, r, c + 1, visited);
+
+    return visited;
 }
 
 // // ** TEST 00 ** //
@@ -156,15 +174,15 @@ const isInBounds = (grid, r, c) => {
 // console.log(bestBridge(grid)); // -> 2
 
 
-// // ** TEST 05 ** //
-// const grid = [
-//     ["W", "L", "W", "W", "W", "W", "W", "W"],
-//     ["W", "L", "W", "W", "W", "W", "W", "W"],
-//     ["W", "W", "W", "W", "W", "W", "W", "W"],
-//     ["W", "W", "W", "W", "W", "W", "W", "W"],
-//     ["W", "W", "W", "W", "W", "W", "W", "W"],
-//     ["W", "W", "W", "W", "W", "W", "L", "W"],
-//     ["W", "W", "W", "W", "W", "W", "L", "L"],
-//     ["W", "W", "W", "W", "W", "W", "W", "L"],
-//   ];
-//   console.log(bestBridge(grid)); // -> 8
+// ** TEST 05 ** //
+const grid = [
+    ["W", "L", "W", "W", "W", "W", "W", "W"],
+    ["W", "L", "W", "W", "W", "W", "W", "W"],
+    ["W", "W", "W", "W", "W", "W", "W", "W"],
+    ["W", "W", "W", "W", "W", "W", "W", "W"],
+    ["W", "W", "W", "W", "W", "W", "W", "W"],
+    ["W", "W", "W", "W", "W", "W", "L", "W"],
+    ["W", "W", "W", "W", "W", "W", "L", "L"],
+    ["W", "W", "W", "W", "W", "W", "W", "L"],
+];
+console.log(bestBridge(grid)); // -> 8
