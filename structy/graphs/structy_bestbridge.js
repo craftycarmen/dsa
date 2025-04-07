@@ -107,6 +107,12 @@ const traverseIsland = (grid, r, c, visited) => {
     return visited;
 }
 
+// r = num of rows
+// c = num of columns
+// time complexity: O(rc)
+// space complexity: O(rc)
+
+
 // // ** TEST 00 ** //
 // const grid = [
 //     ["W", "W", "W", "L", "L"],
