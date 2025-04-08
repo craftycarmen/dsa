@@ -1,5 +1,5 @@
 // has cycle
-// Write a function, hasCycle, that takes in an object representing the adjacency list of a directed graph.The function should return a boolean indicating whether or not the graph contains a cycle.
+// Write a function, hasCycle, that takes in an object representing the adjacency list of a directed graph. The function should return a boolean indicating whether or not the graph contains a cycle.
 
 // A. in the main function:
 //      1. declare a new set called visiting
@@ -17,6 +17,37 @@
 //      6. add node to visited set
 //      7. return false
 
+const hasCycle = (graph) => {
+    const visiting = new Set();
+    const visited = new Set();
+
+    for (let node in graph) {
+        if (cycleDetect(graph, node, visiting, visited) === true) return true;
+    }
+
+    return false;
+}
+
+const cycleDetect = (graph, node, visiting, visited) => {
+    if (visited.has(node)) return false;
+    if (visiting.has(node)) return true;
+
+    visiting.add(node);
+
+    for (let neighbor of graph[node]) {
+        if (cycleDetect(graph, neighbor, visiting, visited) === true) return true;
+    }
+
+    visiting.delete(node);
+    visited.add(node);
+
+    return false;
+}
+
+// n = number of nodes
+// e = number of edges
+// time complexity: O(e) because we're going to potentially travel through the entire graph
+// space complexity: O(n) because we're going to use at most n space when it comes to the recursive call stack and need to put nodes in different sets
 
 //     // *** TEST 00 *** //
 //     console.log(hasCycle({
@@ -76,11 +107,11 @@
 // })); // -> true
 
 
-// // *** TEST 06 *** //
-// console.log(hasCycle({
-//     a: ["b", "c"],
-//     b: ["c"],
-//     c: ["d"],
-//     d: [],
-//     e: ["c"],
-//   })); // -> false
+// *** TEST 06 *** //
+console.log(hasCycle({
+    a: ["b", "c"],
+    b: ["c"],
+    c: ["d"],
+    d: [],
+    e: ["c"],
+})); // -> false
