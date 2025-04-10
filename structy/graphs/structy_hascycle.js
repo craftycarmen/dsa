@@ -107,11 +107,11 @@ const cycleDetect = (graph, node, visiting, visited) => {
 // })); // -> true
 
 
-// *** TEST 06 *** //
-console.log(hasCycle({
-    a: ["b", "c"],
-    b: ["c"],
-    c: ["d"],
-    d: [],
-    e: ["c"],
-})); // -> false
+// // *** TEST 06 *** //
+// console.log(hasCycle({
+//     a: ["b", "c"],
+//     b: ["c"],
+//     c: ["d"],
+//     d: [],
+//     e: ["c"],
+// })); // -> false
