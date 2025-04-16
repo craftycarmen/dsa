@@ -70,17 +70,22 @@ const buildGraph = (numCourses, prereqs) => {
 }
 
 
+// n = num of courses
+// p = num of prereqs
+// time complexity: O(n + p) --> we add instead of multiply because they're not nested loops
+// space complexity: O(n + p)
 
-// *** TEST 0 *** //
-const numCourses = 6;
-const prereqs = [
-    [0, 1],
-    [2, 3],
-    [0, 2],
-    [1, 3],
-    [4, 5],
-];
-console.log(prereqsPossible(numCourses, prereqs)); // -> true
+
+// // *** TEST 01 *** //
+// const numCourses = 6;
+// const prereqs = [
+//     [0, 1],
+//     [2, 3],
+//     [0, 2],
+//     [1, 3],
+//     [4, 5],
+// ];
+// console.log(prereqsPossible(numCourses, prereqs)); // -> true
 
 
 // // *** TEST 0 *** //
@@ -96,7 +101,7 @@ console.log(prereqsPossible(numCourses, prereqs)); // -> true
 // console.log(prereqsPossible(numCourses, prereqs)); // -> false
 
 
-// // *** TEST 0 *** //
+// // *** TEST 02 *** //
 // const numCourses = 5;
 // const prereqs = [
 //     [2, 4],
@@ -107,7 +112,7 @@ console.log(prereqsPossible(numCourses, prereqs)); // -> true
 // console.log(prereqsPossible(numCourses, prereqs)); // -> true
 
 
-// // *** TEST 0 *** //
+// // *** TEST 03 *** //
 // const numCourses = 6;
 // const prereqs = [
 //     [2, 4],
@@ -120,7 +125,7 @@ console.log(prereqsPossible(numCourses, prereqs)); // -> true
 // console.log(prereqsPossible(numCourses, prereqs)); // -> false
 
 
-// // *** TEST 0 *** //
+// // *** TEST 04 *** //
 // const numCourses = 8;
 // const prereqs = [
 //     [1, 0],
@@ -133,7 +138,7 @@ console.log(prereqsPossible(numCourses, prereqs)); // -> true
 // console.log(prereqsPossible(numCourses, prereqs)); // -> true
 
 
-// // *** TEST 0 *** //
+// // *** TEST 05 *** //
 // const numCourses = 8;
 // const prereqs = [
 //     [1, 0],
@@ -147,7 +152,7 @@ console.log(prereqsPossible(numCourses, prereqs)); // -> true
 // console.log(prereqsPossible(numCourses, prereqs)); // -> false
 
 
-// // *** TEST 0 *** //
+// // *** TEST 06 *** //
 // const numCourses = 42;
 // const prereqs = [[6, 36]];
 // console.log(prereqsPossible(numCourses, prereqs)); // -> true
