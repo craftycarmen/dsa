@@ -26,6 +26,21 @@
 //              b. add courseB as a string to the neighbors of courseA in the graph
 //      4. return graph
 
+const prereqsPossible = (numCourses, prereqs) => {
+    const graph = buildGraph(numCourses, prereqs);
+    const visiting = new Set();
+    const visited = new Set();
+
+    for (let node in graph) {
+        if (hasCycle(graph, node, visiting, visited)) return false;
+    };
+
+    return true;
+};
+
+
+
+
 
 // // *** TEST 0 *** //
 // const numCourses = 6;
