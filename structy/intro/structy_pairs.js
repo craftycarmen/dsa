@@ -27,6 +27,13 @@ const pairs = (elements) => {
     return res;
 }
 
+
+// n = length of array;
+// time complexity: O(n2) because we have nested loops
+// space complexity: O(n2) because we are returning n2 pairs of results of the array
+
+
+
 //     // *** TEST 00 *** //
 //     console.log(pairs(["a", "b", "c"])); // ->
 //     // [
