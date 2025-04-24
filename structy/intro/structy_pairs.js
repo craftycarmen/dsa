@@ -13,6 +13,20 @@
 //          ii. add the pair to res
 // 3. return res
 
+const pairs = (elements) => {
+    const res = [];
+
+    for (let i = 0; i < elements.length; i++) {
+        for (let j = i + 1; j < elements.length; j++) {
+            const pair = [ elements[i], elements[j] ];
+            
+            res.push(pair);
+        }
+    }
+
+    return res;
+}
+
 //     // *** TEST 00 *** //
 //     console.log(pairs(["a", "b", "c"])); // ->
 //     // [
