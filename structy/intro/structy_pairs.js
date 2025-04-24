@@ -6,6 +6,13 @@
 // You can assume that the input array contains unique elements.
 
 
+// 1. initialize an empty array called res to store the results
+// 2. iterate through each element of the array, with i pointing to the first element:
+//      a. iterate again through each element of the array, with j pointing to the one element over i:
+//          i. initialize an array with elements at i and elements at j inside called pair to store each pair
+//          ii. add the pair to res
+// 3. return res
+
 //     // *** TEST 00 *** //
 //     console.log(pairs(["a", "b", "c"])); // ->
 //     // [
