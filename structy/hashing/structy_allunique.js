@@ -10,6 +10,9 @@ const allUnique = (items) => {
     return items.length === uniqueItems.size;
 }
 
+// n = number of items
+// time complexity: O(n) converting an array into a set will have to iterate and insert every item into the set under the hood
+// space complexity: O(n) storing the set and operations like checking the size and length run in constant time
 
 // *** TEST 00 *** //
 console.log(allUnique(["q", "r", "s", "a"])); // -> true
