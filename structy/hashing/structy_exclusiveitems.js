@@ -28,6 +28,12 @@ const exclusiveItems = (a, b) => {
     return res;
 }
 
+// n = length of "a" array
+// m = length of "b" array
+// time complexity: O(n + m) --> need to convert arrays into sets and iterate through both of them, one after the other
+// space complexity: O(n + m) --> storing the sets, in which the size is going to be the same as the original array
+
+
 // // ** TEST 00 ** //
 // console.log(exclusiveItems([4, 2, 1, 6], [3, 6, 9, 2, 10])); // -> [4,1,3,9,10]
 
