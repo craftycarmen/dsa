@@ -43,6 +43,11 @@ const eleCount = (elements) => {
     return count;
 }
 
+// n = length of array "a"
+// m = length of array "b"
+// time complexity: O(n + m) --> n comes from the first array converting into a hash map and m comes from converting second array converting into a hash map
+// space complexity: O(n + m) --> you have to store the different counter hash maps
+
 // *** TEST 00 *** //
 console.log(intersectionWithDupes(
     ["a", "b", "c", "b"],
